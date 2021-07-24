@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bike Price Prediction</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+   
+<script type="text/javascript">
+        
+    function Click_predict() {
+        //console.log("Estimate price button clicked");
+          
+        var KMS_DRIVE = document.getElementById("kms");
+        var AGE = document.getElementById("age");
+        var POWER = document.getElementById("pow");
+      
+        var BIKE_NAME= document.getElementById("name");
+        var CITY = document.getElementById("city");
+        var estPrice = document.getElementById("uiEstimatedPrice");
+      
+      
+        var url = "http://127.0.0.1:5000/predict_bike_price"; 
+      
+    $.post(url, {
+            
+        KMS_DRIVE: parseFloat(KMS_DRIVE.value),
+        AGE: parseFloat(AGE.value),
+        POWER: parseFloat(POWER.value),
+      
+        BIKE_NAME: BIKE_NAME.value,
+        CITY: CITY.value,
+            
+    },function(data, status) {
+        console.log(data.estimated_price);
+        estPrice.innerHTML = "<h2>" + data.estimated_price.toString() + "</h2>";
+        console.log(status);
+        });
+      }
+    </script>
+          
+      <link rel="stylesheet" href="app.css">
+</head>
+<body>
+
+    <div class="img"></div>
+    <!-- Navigation Bar-->
+  <div class="navbar">
+    <ul>
+      <li class="item"> <a href="#home"> Home </a></li>
+      <li class="item"> <a href="#contact"> Contact us </a></li>
+      <li class="item"> <a href="#about"> About us </a></li>
+      <li class="item"> <a href="Feed\formpage.html" target="_blank"> Feedback </a></li>
+    </ul>
+  </div>
+    
+  <!--....  Timeline  ...-->
+   <div class="pic">
+    <img src="img\pic2.jpg" width="100%" height="500">
+   </div>
+
+   <!-- Welcome Message-->
+    <div class="welcome">
+      <h1> Welcome! to Second Hand bike Prediction </h1>
+    </div>
+   <!-- Paragraph-->
+   <div class="para">
+     <h6> How it works </h6>
+     <p> This page is created just for predicting the price of bike</p>
+     <p> Just enter the kms, age and power > Now select Bike name and city > Then click on submit </p>
+   </div>
+   
+   <!-- Picture -->
+   <div class="left"> 
+      <img src="img\pic.jpg" width="660" height="1150">
+    </div> 
+    
+    <!--  Form.. Prediction -->
+    <div class="right">
+    <form class="form">
+   
+    <h1 id="home">Bike Price Prediction</h1>
+
+	  <h2>Number of kms driven</h2>
+    <input class="num"  type="text" id="kms" class="floatLabel" name="Kilometers" value="">
+    
+    <h2> Age </h2>
+    <input class="num"  type="text" id="age" class="floatLabel" name="Kilometers" value="">
+    
+    <h2> Power </h2>
+    <input class="num"  type="text" id="pow" class="floatLabel" name="Kilometers" value="">
+    
+		<h2>Bike Name</h2>
+	<div>
+  <select class="val" name="" id="name">
+    <option value="" disabled="disabled" selected="selected">Choose an Option</option>
+	    	<option>bajaj pulsar 180cc</option>
+        <option>bajaj pulsar rs200 abs</option>
+        <option>hero passion plus 100cc</option>
+        <option>hero splendor 100cc</option>
+        <option>ktm duke 250cc</option>
+        <option>honda cbr 250r</option>
+
+  </select>
+</div>
+    
+    <h2>City</h2>
+	<div>
+  <select class="val" name="" id="city">
+    <option value="" disabled="disabled" selected="selected">Choose an Option</option>
+	    	<option> delhi</option>
+        <option> jaipur </option>
+        <option> pune</option>
+        <option> mumbai</option>
+        <option> chennai </option>
+        <option> bangalore</option>
+        <option> bhopal</option>
+        <option> lucknow</option>
+   </select>
+</div>
+    
+	<button class="submit" onclick="Click_predict()" type="button"> Predict Price</button>
+    
+	<div id="uiEstimatedPrice" class="result">	<h2></h2> </div>   
+</form>
+</div>
+
+<!-- Others-->
+<div class="container">
+   <h1 id="about"> </h1>
+  <div class="image">
+    <img src="img\city.webp" height="300" width="400">
+    <div> Bhopal</div>
+  </div>
+  
+  <div class="image">
+   <img src="img\mum.jpg" height="300" width="400">
+   <div> Mumbai</div>
+  </div>
+   
+  <div class="image">
+    <img src="img\many.jpg" height="300" width="400">
+    <div> Many More</div>
+    </div>
+
+    <div class="features">
+      <h1> Features</h1>
+      <div class="center">
+      <img src="img\kms.jpg" height="220" width="250">
+      <img src="img\su1.jpg" height="220" width="250"> 
+      <img src="img\pow.jpg" height="220" width="250">
+    </div>
+     <div class="p1">  Kms Driven </div>
+     <div class="p2"> Brand </div>
+    <div class="p3"> Power</div>
+
+</div>
+
+<!-- Footer ..-->
+<footer>
+    <ul id="contact">
+        <li>E-mail : Smishika123@gmail.com </li>
+        <li class="foot"> LinkedIn :  <a href="https://www.linkedin.com/in/mishika-sahay-b98544179/" target="_blank">mishika-sahay-b98544179</a></li>
+        <li>Contact : 6264378283</li>
+    </ul>
+    <div class="info">
+    <h class="clg"> College : <a href="https://lnct.ac.in/" target="_blank"> The Lakshmi Narain College of Technology </a></h><br>
+    <h> Address: Raisen Rd, nr. Hanuman Mandir, Kalchuri Nagar, Bhopal, Madhya Pradesh 462022</h><br>
+    <h> Phone: 0755 618 5300</h>
+  </div>
+  <div class="copy">
+  <h> Copy&copy;2021 AI Council | Created by Mishika Sahay</h>
+  </div>
+</body>
+</html>
